@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "mongoose": "^5.9.27",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
@@ -22,6 +23,7 @@
     "@babel/preset-react": "^7.10.4",
     "babel-loader": "^8.1.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "faker": "^4.1.0",
     "jquery": "^3.5.1",
     "nodemon": "^2.0.4",
     "webpack": "^4.44.1",
