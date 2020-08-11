@@ -7,15 +7,8 @@ app.use(express.json());
 app.use(express.static(__dirname + "/../public"));
 
 //Render overall Rating bars
-app.get("/api/reviews/1", (req, res) => {
+app.get("/api/overall_reviews/1", (req, res) => {
   let objWithColumnArrays = {
-    cleanliness: [],
-    accuracy: [],
-    communication: [],
-    checkin: [],
-    location: [],
-    value: [],
-    numberOfReviews: 0
   };
 
   Review.find({}, { cleanliness: 1, _id: 0}, (err, results) => {
@@ -74,14 +67,13 @@ app.get("/api/reviews/1", (req, res) => {
                             }
                             return Math.floor((average/category.length) *10) / 10;
                           };
-                          objWithColumnArrays.cleanliness = getAverage(cleanlinessReviews);
-                          objWithColumnArrays.accuracy = getAverage(accuracyReviews);
-                          objWithColumnArrays.communication = getAverage(communicationReviews);
-                          objWithColumnArrays.checkin = getAverage(checkinReviews);
-                          objWithColumnArrays.location = getAverage(locationReviews);
-                          objWithColumnArrays.value = getAverage(valueReviews);
-                          objWithColumnArrays.numberOfReviews = cleanlinessReviews.length;
-                          res.send(objWithColumnArrays);
+                          objWithColumnArrays['Cleanliness'] = getAverage(cleanlinessReviews);
+                          objWithColumnArrays['Accuracy'] = getAverage(accuracyReviews);
+                          objWithColumnArrays['Communication'] = getAverage(communicationReviews);
+                          objWithColumnArrays['Check-in'] = getAverage(checkinReviews);
+                          objWithColumnArrays['Location'] = getAverage(locationReviews);
+                          objWithColumnArrays['Value'] = getAverage(valueReviews);
+                          res.send([objWithColumnArrays, cleanlinessReviews.length]);
                         }
                       })
                       .where('locationID').equals(1);
