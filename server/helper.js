@@ -4,4 +4,4 @@ const findRatings = (reviews) => {
 
 };
 
-module.exports = findRatings;
+module.exports = findRatings
