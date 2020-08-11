@@ -1,5 +1,5 @@
 import React from 'react';
-import ReviewCategory from './ReviewCategories.jsx'
+import ReviewCategory from './reviewCategories.jsx'
 
 const ReviewRatings = (props) => (
   <div className="review-categories" style={{
@@ -7,7 +7,11 @@ const ReviewRatings = (props) => (
     gridTemplateColumns:"50% 50%"
     }}>
     {Object.keys(props.reviews).map((category, index) => {
-      return (<ReviewCategory category={category} rating={props.reviews[category]} key={index} evenOrOdd={index%2 + 1}/>)
+      return (<ReviewCategory
+        category={category}
+        rating={props.reviews[category]}
+        key={index}
+        evenOrOdd={index%2 + 1}/>)
     })}
     </div>
 );

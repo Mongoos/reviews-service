@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import ReviewRatings from './reviewRatings.jsx';
-import IndividualReviews from './individualReviews.jsx';
+import UserReviews from './individualReviews.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -47,7 +47,7 @@ class App extends React.Component {
         }}>★</div> Avg Overall Review Rating ({this.state.totalNumber} reviews)</h2>
         </div>
         <ReviewRatings reviews={this.state.reviews} />
-        <IndividualReviews reviews={this.state.userReviews}/>
+        <UserReviews reviews={this.state.userReviews}/>
         </div>
     )
   }
