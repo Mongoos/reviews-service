@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import ReviewRatings from './reviewRatings.jsx'
+import ReviewRatings from './reviewRatings.jsx';
+import IndividualReviews from './individualReviews.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       reviews: {},
-      totalNumber: 0
+      totalNumber: 0,
+      userReviews: []
     };
+    //get review rating categories
     $.ajax({
       url: "/api/overall_reviews/1",
       method: "GET",
@@ -17,6 +20,16 @@ class App extends React.Component {
         this.setState({
           reviews: reviews[0],
           totalNumber: reviews[1]
+        })
+      }
+    });
+    //get individual reviews
+    $.ajax({
+      url: "/api/individual_reviews/1",
+      method: "GET",
+      success: (reviews) => {
+        this.setState({
+          userReviews: reviews
         })
       }
     });
@@ -33,13 +46,9 @@ class App extends React.Component {
           color: "red"
         }}>★</div> Avg Overall Review Rating ({this.state.totalNumber} reviews)</h2>
         </div>
-        <ReviewRatings reviews={this.state.reviews}/>
-        <div className="reviews">
-          <img></img>
-          <div>date</div>
-          <p></p>
+        <ReviewRatings reviews={this.state.reviews} />
+        <IndividualReviews reviews={this.state.userReviews}/>
         </div>
-      </div>
     )
   }
 }
