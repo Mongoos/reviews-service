@@ -7,7 +7,6 @@ for (var i = 0; i < 101; i++) {
   let randomImgNum = faker.random.number({ 'min': 1, 'max': 36 });
   let randomYear = faker.random.number({ 'min': 2013, 'max': 2020 });
   let randomMonth = faker.date.month();
-  let randomRating = faker.random.number({ 'min': 0, 'max': 5 });
   let randomLocation = faker.random.number({ 'min': 1, 'max': 3});
   //generate random review data
   let review = new Review({
@@ -16,12 +15,12 @@ for (var i = 0; i < 101; i++) {
     date: randomMonth + ' ' + randomYear,
     locationID: randomLocation,
     reviewTxt: faker.random.words(),
-    cleanliness: randomRating,
-    communication: randomRating,
-    checkin: randomRating,
-    accuracy: randomRating,
-    location: randomRating,
-    value: randomRating
+    cleanliness: faker.random.number({ 'min': 0, 'max': 5 }),
+    communication: faker.random.number({ 'min': 0, 'max': 5 }),
+    checkin: faker.random.number({ 'min': 0, 'max': 5 }),
+    accuracy: faker.random.number({ 'min': 0, 'max': 5 }),
+    location: faker.random.number({ 'min': 0, 'max': 5 }),
+    value: faker.random.number({ 'min': 0, 'max': 5 })
   });
 //save random review data to database or log error
   review.save((err, review) => {
