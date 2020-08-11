@@ -14,7 +14,7 @@ for (var i = 0; i < 101; i++) {
     user: faker.name.findName(),
     date: randomMonth + ' ' + randomYear,
     locationID: randomLocation,
-    reviewTxt: faker.random.words(),
+    reviewTxt: faker.lorem.paragraph(),
     cleanliness: faker.random.number({ 'min': 0, 'max': 5 }),
     communication: faker.random.number({ 'min': 0, 'max': 5 }),
     checkin: faker.random.number({ 'min': 0, 'max': 5 }),
