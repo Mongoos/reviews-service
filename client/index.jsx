@@ -24,6 +24,22 @@ const Button = styled.button `
   font-size: 16px;
 `;
 
+const TotalReviews = styled.h2`
+  font-weight: 600;
+  font-size: 22px;
+  padding: 10px;
+`;
+
+const ModalReviewCategories = styled.div`
+  grid-column-start: 1;
+  grid-column-end: 2;
+`;
+
+const ModalUserReviews = styled.div`
+grid-column-start: 2;
+grid-column-end: 3;
+`;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -75,10 +91,10 @@ class App extends React.Component {
         fontFamily:"Helvetica"
       }}>
         <div className="review-header">
-        <h2 style={{padding:"10px"}}> <div style={{
+        <TotalReviews> <div style={{
           display: "inline-block",
           color: "red"
-        }}>★</div> {this.state.totalAvg} ({this.state.totalNumber} reviews)</h2>
+        }}>★</div> {this.state.totalAvg} ({this.state.totalNumber} reviews)</TotalReviews>
         </div>
         <ReviewRatings reviews={this.state.reviews} />
         <UserReviews reviews={this.state.userReviews.slice(0, 6)}/>
@@ -87,13 +103,27 @@ class App extends React.Component {
             width: "1000px",
             position: "absolute",
             left: "25%",
-            borderRadius: "16px"
+            borderRadius: "16px",
+            display: "grid",
+            gridColumnTemplate: "50% 50%",
+            fontFamily: "Helvetica"
           },
           overlay: {
             background: "rgba(0, 0, 0, 0.5)"
           }
         }}>
-          Reviews will populate here
+          <ModalReviewCategories>
+              <div className="review-header">
+              <TotalReviews> <div style={{
+                display: "inline-block",
+                color: "red"
+              }}>★</div> {this.state.totalAvg} ({this.state.totalNumber} reviews)</TotalReviews>
+            </div>
+            <ReviewRatings reviews={this.state.reviews} />
+          </ModalReviewCategories>
+          <ModalUserReviews>
+          <UserReviews reviews={this.state.userReviews}/>
+          </ModalUserReviews>
         </Modal>
         <Button onClick={this.handleShow.bind(this)}>Show all {this.state.totalNumber} reviews</Button>
         </div>

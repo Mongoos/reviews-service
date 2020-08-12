@@ -11,7 +11,7 @@ for (var i = 0; i < 101; i++) {
   //generate random review data
   let review = new Review({
     imageURL: `https://airbnbprojectimages.s3.us-east-2.amazonaws.com/${randomImgNum}.jpg`,
-    user: faker.name.findName(),
+    user: faker.name.firstName(),
     date: randomMonth + ' ' + randomYear,
     locationID: randomLocation,
     reviewTxt: faker.lorem.paragraph(),
