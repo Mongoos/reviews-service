@@ -2,19 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledUserReviews = styled.div`
-  display: grid;
-  grid-template-columns: 50% 50%;
-  padding: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  padding-top: 20px;
 `;
 
 const StyledReview = styled.div`
   display: grid;
-  grid-template-rows: 50% 50%
+  width: 850px;
+  grid-template-rows: 56px 50%;
+  padding: 10px 10px 30px 10px;
 `;
 
 const UserInfo = styled.div`
   display: grid;
-  grid-template-columns: 25% 75%;
+  grid-template-columns: 8% 92%;
   grid-template-rows: 50% 50%;
   grid-row-start: 1;
   grid-row-end: 2;
@@ -30,6 +32,9 @@ const UserImage = styled.img`
 `;
 
 const Username = styled.div`
+  font-weight: bold;
+  align-self: flex-end;
+  padding-bottom: 5px;
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 1;
@@ -37,6 +42,7 @@ const Username = styled.div`
 `;
 
 const Date = styled.div`
+  color: grey;
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 2;
@@ -46,6 +52,9 @@ const Date = styled.div`
 const Paragraph = styled.p`
   grid-row-start: 2;
   grid-row-end: 3;
+  vertical-align: top;
+  margin-top: 15px;
+  line-height: 26px;
 `;
 
 

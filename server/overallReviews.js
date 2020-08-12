@@ -68,7 +68,13 @@ router.get("/1", (req, res) => {
                           objWithColumnArrays['Check-in'] = getAverage(checkinReviews);
                           objWithColumnArrays['Location'] = getAverage(locationReviews);
                           objWithColumnArrays['Value'] = getAverage(valueReviews);
-                          res.send([objWithColumnArrays, cleanlinessReviews.length]);
+                          let totalAvg = 0;
+                          let numberOfCategories = 0;
+                          for (let categories in objWithColumnArrays) {
+                            totalAvg += objWithColumnArrays[categories];
+                            numberOfCategories++;
+                          }
+                          res.send([objWithColumnArrays, cleanlinessReviews.length, Math.floor(totalAvg/numberOfCategories * 10) / 10]);
                         }
                       })
                       .where('locationID').equals(1);

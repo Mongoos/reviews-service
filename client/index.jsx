@@ -10,7 +10,8 @@ class App extends React.Component {
     this.state = {
       reviews: {},
       totalNumber: 0,
-      userReviews: []
+      userReviews: [],
+      totalAvg: 0
     };
     //get review rating categories
     $.ajax({
@@ -19,7 +20,8 @@ class App extends React.Component {
       success: (reviews) => {
         this.setState({
           reviews: reviews[0],
-          totalNumber: reviews[1]
+          totalNumber: reviews[1],
+          totalAvg: reviews[2]
         })
       }
     });
@@ -44,7 +46,7 @@ class App extends React.Component {
         <h2 style={{padding:"10px"}}> <div style={{
           display: "inline-block",
           color: "red"
-        }}>★</div> Avg Overall Review Rating ({this.state.totalNumber} reviews)</h2>
+        }}>★</div> {this.state.totalAvg} ({this.state.totalNumber} reviews)</h2>
         </div>
         <ReviewRatings reviews={this.state.reviews} />
         <UserReviews reviews={this.state.userReviews}/>
