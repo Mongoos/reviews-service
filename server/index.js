@@ -7,9 +7,10 @@ const overallReviews = require('./overallReviews.js')
 app.use(express.json());
 app.use(express.static(__dirname + "/../public"));
 
+//get review categories
 app.use('/api/overall_reviews', overallReviews);
 
-
+//get individual reviews
 app.get('/api/individual_reviews/1' , (req, res) => {
   Review.find({}, { user: 1, imageURL: 1, date: 1, reviewTxt: 1, _id: 0}, (err, results) => {
     if (err) {
@@ -17,7 +18,8 @@ app.get('/api/individual_reviews/1' , (req, res) => {
     } else {
       res.send(results);
     }
-  }).where('locationID').equals(1);
+  }).where('locationID').equals(1)
+  .sort({ date: -1 });
 });
 
 app.listen(port, () => {

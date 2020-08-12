@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import moment from 'moment';
 
 const StyledUserReviews = styled.div`
   display: flex;
@@ -32,7 +33,7 @@ const UserImage = styled.img`
 `;
 
 const Username = styled.div`
-  font-weight: bold;
+  font-weight: 600 !important;
   align-self: flex-end;
   padding-bottom: 5px;
   grid-column-start: 2;
@@ -66,7 +67,7 @@ const UserReviews = (props) => (
           <UserInfo>
             <UserImage src={review.imageURL}></UserImage>
             <Username>{review.user}</Username>
-            <Date>{review.date}</Date>
+            <Date>{moment(review.date).format('MMMM YYYY')}</Date>
           </UserInfo>
         <Paragraph>{review.reviewTxt}</Paragraph>
         </StyledReview>
