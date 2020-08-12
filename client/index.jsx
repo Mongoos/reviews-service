@@ -50,28 +50,38 @@ class App extends React.Component {
       totalAvg: 0,
       showReviews: false
     };
-    //get review rating categories
-    $.ajax({
-      url: "/api/overall_reviews/1",
-      method: "GET",
-      success: (reviews) => {
-        this.setState({
-          reviews: reviews[0],
-          totalNumber: reviews[1],
-          totalAvg: reviews[2]
-        })
-      }
-    });
-    //get individual reviews
-    $.ajax({
-      url: "/api/individual_reviews/1",
-      method: "GET",
-      success: (reviews) => {
-        this.setState({
-          userReviews: reviews
-        })
-      }
-    });
+
+  }
+
+  componentDidMount() {
+    const urlID = window.location.href.split('/')[3];
+    console.log(urlID);
+    this.fetchListingInfo(urlID);
+  }
+
+  fetchListingInfo(urlID) {
+        //get review rating categories
+        $.ajax({
+          url: `/api/overall_reviews/${urlID}`,
+          method: "GET",
+          success: (reviews) => {
+            this.setState({
+              reviews: reviews[0],
+              totalNumber: reviews[1],
+              totalAvg: reviews[2]
+            })
+          }
+        });
+        //get individual reviews
+        $.ajax({
+          url: `/api/individual_reviews/${urlID}`,
+          method: "GET",
+          success: (reviews) => {
+            this.setState({
+              userReviews: reviews
+            })
+          }
+        });
   }
 
   handleClose() {
