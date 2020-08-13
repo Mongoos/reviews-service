@@ -3,7 +3,7 @@ const router = express.Router();
 const Review = require('../database/connection.js');
 
 //Render overall Rating bars
-router.get("/1", (req, res) => {
+router.get("/:id", (req, res) => {
   let objWithColumnArrays = {};
 
   Review.find({}, { cleanliness: 1, _id: 0}, (err, results) => {
@@ -77,22 +77,22 @@ router.get("/1", (req, res) => {
                           res.send([objWithColumnArrays, cleanlinessReviews.length, Math.floor(totalAvg/numberOfCategories * 10) / 10]);
                         }
                       })
-                      .where('locationID').equals(1);
+                      .where('locationID').equals(req.params.id);
                     }
                   })
-                  .where('locationID').equals(1);
+                  .where('locationID').equals(req.params.id);
                 }
               })
-              .where('locationID').equals(1);
+              .where('locationID').equals(req.params.id);
             }
           })
-          .where('locationID').equals(1);
+          .where('locationID').equals(req.params.id);
         }
       })
-      .where('locationID').equals(1);
+      .where('locationID').equals(req.params.id);
     }
   })
-  .where('locationID').equals(1);
+  .where('locationID').equals(req.params.id);
 });
 
 module.exports = router;

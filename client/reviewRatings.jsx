@@ -3,8 +3,8 @@ import ReviewCategory from './reviewCategories.jsx'
 
 const ReviewRatings = (props) => (
   <div className="review-categories" style={{
-    display:"grid",
-    gridTemplateColumns:"50% 50%"
+    display:"flex",
+    flexFlow: "row wrap"
     }}>
     {Object.keys(props.reviews).map((category, index) => {
       return (<ReviewCategory

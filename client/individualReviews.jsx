@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import moment from 'moment';
 
 const StyledUserReviews = styled.div`
   display: flex;
@@ -9,9 +10,9 @@ const StyledUserReviews = styled.div`
 
 const StyledReview = styled.div`
   display: grid;
-  width: 850px;
+  width: 40%;
   grid-template-rows: 56px 50%;
-  padding: 10px 10px 30px 10px;
+  padding: 10px 100px 30px 10px;
 `;
 
 const UserInfo = styled.div`
@@ -32,21 +33,25 @@ const UserImage = styled.img`
 `;
 
 const Username = styled.div`
-  font-weight: bold;
+  font-weight: 600 !important;
+  font-size: 16px;
   align-self: flex-end;
-  padding-bottom: 5px;
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 1;
   grid-row-end: 2;
+  margin-left: 10px;
 `;
 
 const Date = styled.div`
   color: grey;
+  font-size: 14px;
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 2;
   grid-row-end: 3;
+  margin-left: 10px;
+  margin-top: 3px;
 `;
 
 const Paragraph = styled.p`
@@ -66,7 +71,7 @@ const UserReviews = (props) => (
           <UserInfo>
             <UserImage src={review.imageURL}></UserImage>
             <Username>{review.user}</Username>
-            <Date>{review.date}</Date>
+            <Date>{moment(review.date).format('MMMM YYYY')}</Date>
           </UserInfo>
         <Paragraph>{review.reviewTxt}</Paragraph>
         </StyledReview>
