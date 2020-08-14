@@ -26,7 +26,6 @@ const Button = styled.button `
 
 const TotalReviews = styled.h2`
   font-weight: 600;
-  font-size: 22px;
   padding: 10px;
 `;
 
@@ -35,16 +34,33 @@ const ModalReviewCategories = styled.div`
   grid-column-end: 2;
   display: flex;
   flex-direction: column;
+  padding-right: 0px;
 `;
 
 const ModalUserReviews = styled.div`
   grid-column-start: 2;
   grid-column-end: 3;
-  height: 600px;
+  overflow-y: scroll;
+  height: ;
+  position: relative;
+  padding: 10px 50px 10px 10px;
 `;
 
-const Normal = styled.div`
+const NormalView = styled.div`
   column-count: 2;
+`;
+
+const StyledModal = styled.div`
+  display: grid;
+  grid-template-columns: 40% 60%;
+  overflow-y: hidden;
+  height: 100%;
+`;
+
+const ModalHeader = styled.div`
+  font-size: 30px;
+  font-weight: bold;
+  margin: 10px;
 `;
 
 class App extends React.Component {
@@ -112,40 +128,37 @@ class App extends React.Component {
           color: "red"
         }}>★</div> {this.state.totalAvg} ({this.state.totalNumber} reviews)</TotalReviews>
         </div>
-          <Normal>
+          <NormalView>
           <ReviewRatings reviews={this.state.reviews} />
-          </Normal>
-          <Normal>
+          </NormalView>
+          <NormalView>
           <UserReviews reviews={this.state.userReviews.slice(0, 6)}/>
-          </Normal>
-
-
+          </NormalView>
         <Modal isOpen={this.state.showReviews} onRequestClose={this.handleClose.bind(this)} style={{
           content: {
-            width: "1000px",
+            width: "55%",
             position: "absolute",
-            left: "25%",
+            left: "20%",
             borderRadius: "16px",
-            display: "grid",
-            gridColumnTemplate: "50% 50%",
             fontFamily: "Helvetica"
           },
           overlay: {
             background: "rgba(0, 0, 0, 0.5)"
           }
         }}>
+          <StyledModal>
           <ModalReviewCategories>
-              <div className="review-header">
-              <TotalReviews> <div style={{
+              <ModalHeader> <div style={{
                 display: "inline-block",
                 color: "red"
-              }}>★</div> {this.state.totalAvg} ({this.state.totalNumber} reviews)</TotalReviews>
-            </div>
+              }}>★</div> {this.state.totalAvg} ({this.state.totalNumber} reviews)
+              </ModalHeader>
             <ReviewRatings reviews={this.state.reviews} />
           </ModalReviewCategories>
           <ModalUserReviews>
           <UserReviews reviews={this.state.userReviews}/>
           </ModalUserReviews>
+          </StyledModal>
         </Modal>
         <Button onClick={this.handleShow.bind(this)}>Show all {this.state.totalNumber} reviews</Button>
         </div>

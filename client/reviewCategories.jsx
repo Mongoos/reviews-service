@@ -33,6 +33,8 @@ const RatingsBar = styled.div`
 
 const Rating = styled.div`
   margin-left: 10px;
+  font-size: 14px;
+  font-weight: 600;
 `;
 
 const Score = styled.div`
