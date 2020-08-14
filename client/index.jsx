@@ -33,11 +33,18 @@ const TotalReviews = styled.h2`
 const ModalReviewCategories = styled.div`
   grid-column-start: 1;
   grid-column-end: 2;
+  display: flex;
+  flex-direction: column;
 `;
 
 const ModalUserReviews = styled.div`
-grid-column-start: 2;
-grid-column-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  height: 600px;
+`;
+
+const Normal = styled.div`
+  column-count: 2;
 `;
 
 class App extends React.Component {
@@ -55,7 +62,6 @@ class App extends React.Component {
 
   componentDidMount() {
     const urlID = window.location.href.split('/')[3];
-    console.log(urlID);
     this.fetchListingInfo(urlID);
   }
 
@@ -106,8 +112,14 @@ class App extends React.Component {
           color: "red"
         }}>★</div> {this.state.totalAvg} ({this.state.totalNumber} reviews)</TotalReviews>
         </div>
-        <ReviewRatings reviews={this.state.reviews} />
-        <UserReviews reviews={this.state.userReviews.slice(0, 6)}/>
+          <Normal>
+          <ReviewRatings reviews={this.state.reviews} />
+          </Normal>
+          <Normal>
+          <UserReviews reviews={this.state.userReviews.slice(0, 6)}/>
+          </Normal>
+
+
         <Modal isOpen={this.state.showReviews} onRequestClose={this.handleClose.bind(this)} style={{
           content: {
             width: "1000px",

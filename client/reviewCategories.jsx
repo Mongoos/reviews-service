@@ -5,8 +5,8 @@ import styled from 'styled-components';
 const StyledReviewCategory = styled.div`
   display: grid;
   grid-column-template: 50% 50%;
-  width: 40%;
-  margin: 10px 100px 10px 10px;
+  margin: 10px 5% 10px 10px;
+  width: 100%;
 `;
 
 const RatingFiller = styled.img`
@@ -23,6 +23,9 @@ const RatingBucket = styled.img`
   margin: -5px;
 `;
 
+const CategoryName = styled.div`
+  margin-right: 50px;
+`;
 
 const RatingsBar = styled.div`
   display: grid;
@@ -43,7 +46,7 @@ const Score = styled.div`
 
 let ReviewCategory = (props) => (
   <StyledReviewCategory evenOrOdd={props.evenOrOdd}>
-    <div>{props.category}</div>
+    <CategoryName>{props.category}</CategoryName>
     <Score>
     <RatingsBar>
       <RatingBucket src={'https://airbnbprojectimages.s3.us-east-2.amazonaws.com/Ratings+Bar/ratingscontainer.png'}></RatingBucket>
