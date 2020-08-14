@@ -30,20 +30,18 @@ const TotalReviews = styled.h2`
 `;
 
 const ModalReviewCategories = styled.div`
-  grid-column-start: 1;
-  grid-column-end: 2;
+  max-width: 300px;
   display: flex;
   flex-direction: column;
   padding-right: 0px;
 `;
 
 const ModalUserReviews = styled.div`
-  grid-column-start: 2;
-  grid-column-end: 3;
   overflow-y: scroll;
-  height: ;
+  height: 100%;
   position: relative;
-  padding: 10px 50px 10px 10px;
+  max-width: 500px;
+  padding: 10px 50px 10px 100px;
 `;
 
 const NormalView = styled.div`
@@ -51,8 +49,8 @@ const NormalView = styled.div`
 `;
 
 const StyledModal = styled.div`
-  display: grid;
-  grid-template-columns: 40% 60%;
+  display: flex;
+  flex-flow: row wrap;
   overflow-y: hidden;
   height: 100%;
 `;
@@ -136,9 +134,9 @@ class App extends React.Component {
           </NormalView>
         <Modal isOpen={this.state.showReviews} onRequestClose={this.handleClose.bind(this)} style={{
           content: {
-            width: "55%",
+            maxWidth: "50%",
             position: "absolute",
-            left: "20%",
+            left: "25%",
             borderRadius: "16px",
             fontFamily: "Helvetica"
           },
