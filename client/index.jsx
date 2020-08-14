@@ -38,10 +38,12 @@ const ModalReviewCategories = styled.div`
 
 const ModalUserReviews = styled.div`
   overflow-y: scroll;
-  height: 100%;
+  height: 90%;
   position: relative;
   max-width: 500px;
-  padding: 10px 50px 10px 100px;
+  min-width: 300px;
+  padding: 0px 50px 10px 100px;
+  display: block;
 `;
 
 const NormalView = styled.div`
@@ -51,14 +53,22 @@ const NormalView = styled.div`
 const StyledModal = styled.div`
   display: flex;
   flex-flow: row wrap;
-  overflow-y: hidden;
   height: 100%;
+  width: 100%;
 `;
 
 const ModalHeader = styled.div`
   font-size: 30px;
   font-weight: bold;
-  margin: 10px;
+  margin: 23px 10px 10px 10px;
+`;
+const XButton = styled.div`
+  height: 2%;
+  width: 100%;
+  cursor: pointer;
+  font-size: bold;
+  align-self: center;
+  margin-left: 20px;
 `;
 
 class App extends React.Component {
@@ -145,6 +155,9 @@ class App extends React.Component {
           }
         }}>
           <StyledModal>
+          <XButton onClick={this.handleClose.bind(this)}>
+              X
+            </XButton>
           <ModalReviewCategories>
               <ModalHeader> <div style={{
                 display: "inline-block",
