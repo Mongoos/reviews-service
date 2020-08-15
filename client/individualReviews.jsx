@@ -14,24 +14,22 @@ const StyledReview = styled.div`
   grid-template-rows: 56px 50%;
   display: block;
   padding: 10px;
-  min-height: 165px;
+  min-height: 160px;
 `;
 const User = styled.div`
   display: grid;
-  width: 100%;
-  grid-template-columns: 10% 90%;
+  grid-template-columns: 60px auto;
   grid-row-start: 1;
   grid-row-end: 2;
 `;
 
 const UserInfo = styled.div`
-  margin: 10px;
   display: flex;
   flex-direction: column;
   grid-column-start: 2;
   grid-column-end: 3;
-  width: 100%;
-  float: left;
+  padding-top: 10px;
+  padding-left: 10px;
 `;
 
 const UserImage = styled.img`

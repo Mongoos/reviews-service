@@ -50,6 +50,13 @@ const NormalView = styled.div`
   font-size: 16px;
 `;
 
+const NormalViewUsers = styled.div`
+  column-count: 2;
+  font-size: 16px;
+  margin-top: 20px;
+  height: auto;
+`;
+
 const StyledModal = styled.div`
   display: flex;
   flex-flow: row wrap;
@@ -150,9 +157,9 @@ class App extends React.Component {
           <NormalView>
           <ReviewRatings reviews={this.state.reviews} />
           </NormalView>
-          <NormalView>
+          <NormalViewUsers>
           <UserReviews reviews={this.state.userReviews.slice(0, 6)}/>
-          </NormalView>
+          </NormalViewUsers>
         <Modal isOpen={this.state.showReviews} onRequestClose={this.handleClose.bind(this)} style={{
           content: {
             maxWidth: "60%",
