@@ -5,6 +5,7 @@ import ReviewRatings from './reviewRatings.jsx';
 import UserReviews from './individualReviews.jsx';
 import styled from 'styled-components';
 import Modal from 'react-modal';
+import ModalApp from './modal.jsx';
 
 Modal.setAppElement('#app')
 
@@ -29,22 +30,6 @@ const TotalReviews = styled.h2`
   padding: 10px;
 `;
 
-const ModalReviewCategories = styled.div`
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  margin-left: 20px;
-  flex: 1;
-`;
-
-const ModalUserReviews = styled.div`
-  overflow-y: scroll;
-  height: 90%;
-  position: relative;
-  flex: 0 0 750px;
-  margin-top: 5px;
-`;
-
 const NormalView = styled.div`
   column-count: 2;
   font-size: 16px;
@@ -57,37 +42,20 @@ const NormalViewUsers = styled.div`
   height: auto;
 `;
 
-const StyledModal = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  height: 100%;
-  width: 100%;
-  padding: 0px;
-`;
-
-const ModalHeader = styled.div`
-  font-size: 32px;
-  font-weight: 700;
-  margin: 0px 10px 10px 10px;
-`;
-
-const XButtonContainer = styled.div`
-  height: 5%;
-  width: 100%;
-  position: relative;
-`;
-const XButton = styled.div`
-  cursor: pointer;
-  font-size: bold;
-  display: block;
-  position: absolute;
-  top: 50%;
-  margin-left: 20px;
-`;
-
-const ModalStyling = styled.div`
-  font-size: 14px;
-`;
+const modalStyling = {
+  content: {
+    maxWidth: "60%",
+    position: "absolute",
+    left: "15%",
+    borderRadius: "16px",
+    fontFamily: "Helvetica",
+    padding: "0px",
+    margin: "0px"
+  },
+  overlay: {
+    background: "rgba(0, 0, 0, 0.5)"
+  }
+  };
 
 class App extends React.Component {
   constructor(props) {
@@ -160,38 +128,13 @@ class App extends React.Component {
           <NormalViewUsers>
           <UserReviews reviews={this.state.userReviews.slice(0, 6)}/>
           </NormalViewUsers>
-        <Modal isOpen={this.state.showReviews} onRequestClose={this.handleClose.bind(this)} style={{
-          content: {
-            maxWidth: "60%",
-            position: "absolute",
-            left: "15%",
-            borderRadius: "16px",
-            fontFamily: "Helvetica",
-            padding: "0px",
-            margin: "0px"
-          },
-          overlay: {
-            background: "rgba(0, 0, 0, 0.5)"
-          }
-        }}>
-          <StyledModal>
-          <XButtonContainer>
-          <XButton onClick={this.handleClose.bind(this)}>X</XButton>
-          </XButtonContainer>
-          <ModalReviewCategories>
-              <ModalHeader> <div style={{
-                display: "inline-block",
-                color: "red"
-              }}>★</div> {this.state.totalAvg} ({this.state.totalNumber} reviews)
-              </ModalHeader>
-            <ModalStyling>
-            <ReviewRatings reviews={this.state.reviews} />
-            </ModalStyling>
-          </ModalReviewCategories>
-          <ModalUserReviews>
-          <UserReviews reviews={this.state.userReviews}/>
-          </ModalUserReviews>
-          </StyledModal>
+        <Modal isOpen={this.state.showReviews} onRequestClose={this.handleClose.bind(this)} style={modalStyling}>
+          <ModalApp
+            onRequestClose={this.handleClose.bind(this)}
+            categoryReviews={this.state.reviews}
+            totalAvg={this.state.totalAvg}
+            totalReviews={this.state.totalNumber}
+            userReviews={this.state.userReviews} />
         </Modal>
         <Button onClick={this.handleShow.bind(this)}>Show all {this.state.totalNumber} reviews</Button>
         </div>
