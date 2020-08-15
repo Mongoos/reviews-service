@@ -30,24 +30,24 @@ const TotalReviews = styled.h2`
 `;
 
 const ModalReviewCategories = styled.div`
-  max-width: 300px;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
-  padding-right: 0px;
+  margin-left: 20px;
+  flex: 1;
 `;
 
 const ModalUserReviews = styled.div`
   overflow-y: scroll;
   height: 90%;
   position: relative;
-  max-width: 500px;
-  min-width: 300px;
-  padding: 0px 50px 10px 100px;
-  display: block;
+  flex: 0 0 750px;
+  margin-top: 5px;
 `;
 
 const NormalView = styled.div`
   column-count: 2;
+  font-size: 16px;
 `;
 
 const StyledModal = styled.div`
@@ -55,20 +55,31 @@ const StyledModal = styled.div`
   flex-flow: row wrap;
   height: 100%;
   width: 100%;
+  padding: 0px;
 `;
 
 const ModalHeader = styled.div`
-  font-size: 30px;
-  font-weight: bold;
-  margin: 23px 10px 10px 10px;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0px 10px 10px 10px;
+`;
+
+const XButtonContainer = styled.div`
+  height: 5%;
+  width: 100%;
+  position: relative;
 `;
 const XButton = styled.div`
-  height: 2%;
-  width: 100%;
   cursor: pointer;
   font-size: bold;
-  align-self: center;
+  display: block;
+  position: absolute;
+  top: 50%;
   margin-left: 20px;
+`;
+
+const ModalStyling = styled.div`
+  font-size: 14px;
 `;
 
 class App extends React.Component {
@@ -144,27 +155,31 @@ class App extends React.Component {
           </NormalView>
         <Modal isOpen={this.state.showReviews} onRequestClose={this.handleClose.bind(this)} style={{
           content: {
-            maxWidth: "50%",
+            maxWidth: "60%",
             position: "absolute",
-            left: "25%",
+            left: "15%",
             borderRadius: "16px",
-            fontFamily: "Helvetica"
+            fontFamily: "Helvetica",
+            padding: "0px",
+            margin: "0px"
           },
           overlay: {
             background: "rgba(0, 0, 0, 0.5)"
           }
         }}>
           <StyledModal>
-          <XButton onClick={this.handleClose.bind(this)}>
-              X
-            </XButton>
+          <XButtonContainer>
+          <XButton onClick={this.handleClose.bind(this)}>X</XButton>
+          </XButtonContainer>
           <ModalReviewCategories>
               <ModalHeader> <div style={{
                 display: "inline-block",
                 color: "red"
               }}>★</div> {this.state.totalAvg} ({this.state.totalNumber} reviews)
               </ModalHeader>
+            <ModalStyling>
             <ReviewRatings reviews={this.state.reviews} />
+            </ModalStyling>
           </ModalReviewCategories>
           <ModalUserReviews>
           <UserReviews reviews={this.state.userReviews}/>

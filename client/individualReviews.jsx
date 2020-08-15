@@ -5,16 +5,17 @@ import moment from 'moment';
 const StyledUserReviews = styled.div`
   display: flex;
   flex-flow: column wrap;
-  padding-top: 20px;
+  margin-right: 50px;
+  margin-left: 10px;
 `;
 
 const StyledReview = styled.div`
   display: grid;
-  width: 100%;
   grid-template-rows: 56px 50%;
-  padding: 10px 5% 30px 10px;
+  display: block;
+  padding: 10px;
+  min-height: 165px;
 `;
-
 const User = styled.div`
   display: grid;
   width: 100%;

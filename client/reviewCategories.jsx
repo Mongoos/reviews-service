@@ -3,10 +3,10 @@ import styled from 'styled-components';
 
 
 const StyledReviewCategory = styled.div`
-  display: grid;
-  grid-column-template: 50% 50%;
-  margin: 10px 5% 10px 10px;
+  display: inline-grid;
+  grid-template-columns: 50% 50%;
   width: 100%;
+  margin: 5px;
 `;
 
 const RatingFiller = styled.img`
@@ -25,6 +25,9 @@ const RatingBucket = styled.img`
 
 const CategoryName = styled.div`
   margin-right: 50px;
+  margin-left: 10px;
+  grid-column-start: 1;
+  grid-column-end: 2;
 `;
 
 const RatingsBar = styled.div`
@@ -39,10 +42,12 @@ const Rating = styled.div`
 
 const Score = styled.div`
   display: flex;
+  width: auto;
   align-items:center;
   grid-column-start: 2;
   grid-column-end: 3;
   justify-content: flex-end;
+  margin-right: 50px;
 `;
 
 
