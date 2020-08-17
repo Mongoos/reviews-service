@@ -6,7 +6,7 @@ const StyledReviewCategory = styled.div`
   display: inline-grid;
   grid-template-columns: 50% 50%;
   width: 100%;
-  margin: 5px;
+  margin: 5px 50px 10px 10px;
 `;
 
 const RatingFiller = styled.img`
@@ -47,7 +47,7 @@ const Score = styled.div`
   grid-column-start: 2;
   grid-column-end: 3;
   justify-content: flex-end;
-  margin-right: 50px;
+  margin-right: 30px;
 `;
 
 

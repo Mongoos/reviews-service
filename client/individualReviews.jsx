@@ -2,19 +2,20 @@ import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 
+
 const StyledUserReviews = styled.div`
   display: flex;
   flex-flow: column wrap;
-  margin-right: 50px;
   margin-left: 10px;
 `;
 
 const StyledReview = styled.div`
   display: grid;
   grid-template-rows: 56px 50%;
-  display: block;
   padding: 10px;
+  display: inline-block;
   min-height: 160px;
+  margin-right: 50px;
 `;
 const User = styled.div`
   display: grid;

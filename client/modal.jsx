@@ -43,7 +43,7 @@ const ModalReviewCategories = styled.div`
   display: flex;
   flex-direction: column;
   padding-left: 10px;
-  max-width: 1300px;
+  max-width: 1100px;
 `;
 
 const ModalUserReviews = styled.div`

@@ -6,6 +6,13 @@ import UserReviews from './individualReviews.jsx';
 import styled from 'styled-components';
 import Modal from 'react-modal';
 import ModalApp from './modal.jsx';
+import WebFont from 'webfontloader';
+
+WebFont.load({
+  google: {
+    families: ['Roboto', 'sans-serif']
+  }
+});
 
 Modal.setAppElement('#app')
 
@@ -48,9 +55,9 @@ const modalStyling = {
     position: "absolute",
     left: "15%",
     borderRadius: "16px",
-    fontFamily: "Helvetica",
     padding: "0px",
-    margin: "0px"
+    margin: "0px",
+    fontFamily: "Roboto"
   },
   overlay: {
     background: "rgba(0, 0, 0, 0.5)"
@@ -114,7 +121,7 @@ class App extends React.Component {
   render() {
     return (
       <div style={{
-        fontFamily:"Helvetica"
+        fontFamily: "Roboto"
       }}>
         <div className="review-header">
         <TotalReviews> <div style={{

@@ -74,7 +74,7 @@ router.get("/:id", (req, res) => {
                             totalAvg += objWithColumnArrays[categories];
                             numberOfCategories++;
                           }
-                          res.send([objWithColumnArrays, cleanlinessReviews.length, Math.floor(totalAvg/numberOfCategories * 10) / 10]);
+                          res.send([objWithColumnArrays, cleanlinessReviews.length, Math.floor(totalAvg/numberOfCategories * 100) / 100]);
                         }
                       })
                       .where('locationID').equals(req.params.id);
