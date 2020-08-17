@@ -2,6 +2,10 @@ var supertest = require('supertest');
 var request = supertest('localhost:3000');
 var React = require('react');
 var userReviews = require('../data/userReviewData.js');
+import Enzyme, { configure, shallow, mount, render } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+configure({ adapter: new Adapter() });
 
 //Integration tests
 describe('API routes', function(){
