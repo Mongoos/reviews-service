@@ -14,7 +14,7 @@ WebFont.load({
   }
 });
 
-Modal.setAppElement('#app')
+Modal.setAppElement('#app');
 
 const Button = styled.button `
   margin: 5px;
@@ -51,18 +51,18 @@ const NormalViewUsers = styled.div`
 
 const modalStyling = {
   content: {
-    maxWidth: "60%",
-    position: "absolute",
-    left: "15%",
-    borderRadius: "16px",
-    padding: "0px",
-    margin: "0px",
-    fontFamily: "Roboto"
+    maxWidth: '60%',
+    position: 'absolute',
+    left: '15%',
+    borderRadius: '16px',
+    padding: '0px',
+    margin: '0px',
+    fontFamily: 'Roboto'
   },
   overlay: {
-    background: "rgba(0, 0, 0, 0.5)"
+    background: 'rgba(0, 0, 0, 0.5)'
   }
-  };
+};
 
 class App extends React.Component {
   constructor(props) {
@@ -83,39 +83,39 @@ class App extends React.Component {
   }
 
   fetchListingInfo(urlID) {
-        //get review rating categories
-        $.ajax({
-          url: `/api/overall_reviews/${urlID}`,
-          method: "GET",
-          success: (reviews) => {
-            this.setState({
-              reviews: reviews[0],
-              totalNumber: reviews[1],
-              totalAvg: reviews[2]
-            })
-          }
+    //get review rating categories
+    $.ajax({
+      url: `/api/overall_reviews/${urlID}`,
+      method: 'GET',
+      success: (reviews) => {
+        this.setState({
+          reviews: reviews[0],
+          totalNumber: reviews[1],
+          totalAvg: reviews[2]
         });
-        //get individual reviews
-        $.ajax({
-          url: `/api/individual_reviews/${urlID}`,
-          method: "GET",
-          success: (reviews) => {
-            this.setState({
-              userReviews: reviews
-            })
-          }
+      }
+    });
+    //get individual reviews
+    $.ajax({
+      url: `/api/individual_reviews/${urlID}`,
+      method: 'GET',
+      success: (reviews) => {
+        this.setState({
+          userReviews: reviews
         });
+      }
+    });
   }
 
   handleClose() {
     this.setState({
       showReviews: false
-    })
+    });
   }
   handleShow() {
     this.setState({
       showReviews: true
-    })
+    });
   }
 
   render() {
@@ -124,17 +124,18 @@ class App extends React.Component {
         fontFamily: "Roboto"
       }}>
         <div className="review-header">
-        <TotalReviews> <div style={{
-          display: "inline-block",
-          color: "red"
-        }}>★</div> {this.state.totalAvg} ({this.state.totalNumber} reviews)</TotalReviews>
+          <TotalReviews>
+            <div style={{
+              display: "inline-block",
+              color: "red"}}>★</div>{this.state.totalAvg} ({this.state.totalNumber} reviews)
+          </TotalReviews>
         </div>
-          <NormalView>
+        <NormalView>
           <ReviewRatings reviews={this.state.reviews} />
-          </NormalView>
-          <NormalViewUsers>
+        </NormalView>
+        <NormalViewUsers>
           <UserReviews reviews={this.state.userReviews.slice(0, 6)}/>
-          </NormalViewUsers>
+        </NormalViewUsers>
         <Modal isOpen={this.state.showReviews} onRequestClose={this.handleClose.bind(this)} style={modalStyling}>
           <ModalApp
             onRequestClose={this.handleClose.bind(this)}
@@ -144,8 +145,8 @@ class App extends React.Component {
             userReviews={this.state.userReviews} />
         </Modal>
         <Button onClick={this.handleShow.bind(this)}>Show all {this.state.totalNumber} reviews</Button>
-        </div>
-    )
+      </div>
+    );
   }
 }
 

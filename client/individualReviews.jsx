@@ -63,7 +63,7 @@ const Paragraph = styled.p`
 
 const UserReviews = (props) => (
   <StyledUserReviews>
-      {props.reviews.map((review, index) => {
+    {props.reviews.map((review, index) => {
       return(
         <StyledReview key={index}>
           <User>
@@ -73,10 +73,10 @@ const UserReviews = (props) => (
               <Date>{moment(review.date).format('MMMM YYYY')}</Date>
             </UserInfo>
           </User>
-        <Paragraph>{review.reviewTxt}</Paragraph>
+          <Paragraph>{review.reviewTxt}</Paragraph>
         </StyledReview>
-      )
-      })}
+      );
+    })}
   </StyledUserReviews>
 );
 

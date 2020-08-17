@@ -55,13 +55,13 @@ let ReviewCategory = (props) => (
   <StyledReviewCategory evenOrOdd={props.evenOrOdd}>
     <CategoryName>{props.category}</CategoryName>
     <Score>
-    <RatingsBar>
-      <RatingBucket src={'https://airbnbprojectimages.s3.us-east-2.amazonaws.com/Ratings+Bar/ratingscontainer.png'}></RatingBucket>
-      <RatingFiller rating={props.rating} src={'https://airbnbprojectimages.s3.us-east-2.amazonaws.com/Ratings+Bar/ratingsbar.png'} ></RatingFiller>
-    </RatingsBar>
-    <Rating>{props.rating}</Rating>
+      <RatingsBar>
+        <RatingBucket src={'https://airbnbprojectimages.s3.us-east-2.amazonaws.com/Ratings+Bar/ratingscontainer.png'}></RatingBucket>
+        <RatingFiller rating={props.rating} src={'https://airbnbprojectimages.s3.us-east-2.amazonaws.com/Ratings+Bar/ratingsbar.png'} ></RatingFiller>
+      </RatingsBar>
+      <Rating>{props.rating}</Rating>
     </Score>
   </StyledReviewCategory>
-)
+);
 
 export default ReviewCategory;

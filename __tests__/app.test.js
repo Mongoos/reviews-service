@@ -1,7 +1,11 @@
-const React = require('react');
-const userReviews = require('../data/userReviewData.js');
+var supertest = require('supertest');
+var request = supertest('localhost:3000');
+var React = require('react');
+var userReviews = require('../data/userReviewData.js');
+import Enzyme, { configure, shallow, mount, render } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
-const request = require('supertest')('http://localhost:3000');
+configure({ adapter: new Adapter() });
 
 //Integration tests
 describe('API routes', function(){
@@ -19,7 +23,7 @@ describe('API routes', function(){
             "Value": 2.6
         },
         35,
-        2.3
+        2.31
     ])
     })
     .end(done);

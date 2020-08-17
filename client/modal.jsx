@@ -57,21 +57,21 @@ font-size: 14px;
 
 const ModalApp = (props) => (
   <StyledModal>
-  <XButtonContainer>
-    <XButton onClick={props.onRequestClose}>X</XButton>
-  </XButtonContainer>
-  <View>
-    <ModalReviewCategories>
-      <ModalHeader>
-        <div style={{ display: "inline-block", color: "red"}}>★</div> {props.totalAvg} ({props.totalReviews} reviews)
-      </ModalHeader>
-      <ModalView><ReviewRatings reviews={props.categoryReviews} /></ModalView>
-    </ModalReviewCategories>
-    <ModalUserReviews>
-      <UserReviews reviews={props.userReviews}/>
-    </ModalUserReviews>
-  </View>
+    <XButtonContainer>
+      <XButton onClick={props.onRequestClose}>X</XButton>
+    </XButtonContainer>
+    <View>
+      <ModalReviewCategories>
+        <ModalHeader>
+          <div style={{ display: "inline-block", color: "red"}}>★</div> {props.totalAvg} ({props.totalReviews} reviews)
+        </ModalHeader>
+        <ModalView><ReviewRatings reviews={props.categoryReviews} /></ModalView>
+      </ModalReviewCategories>
+      <ModalUserReviews>
+        <UserReviews reviews={props.userReviews}/>
+      </ModalUserReviews>
+    </View>
   </StyledModal>
-)
+);
 
 export default ModalApp;
