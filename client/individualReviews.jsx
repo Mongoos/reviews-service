@@ -2,25 +2,35 @@ import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 
+
 const StyledUserReviews = styled.div`
   display: flex;
-  flex-flow: row wrap;
-  padding-top: 20px;
+  flex-flow: column wrap;
+  margin-left: 10px;
 `;
 
 const StyledReview = styled.div`
   display: grid;
-  width: 40%;
   grid-template-rows: 56px 50%;
-  padding: 10px 100px 30px 10px;
+  padding: 10px;
+  display: inline-block;
+  min-height: 160px;
+  margin-right: 50px;
+`;
+const User = styled.div`
+  display: grid;
+  grid-template-columns: 60px auto;
+  grid-row-start: 1;
+  grid-row-end: 2;
 `;
 
 const UserInfo = styled.div`
-  display: grid;
-  grid-template-columns: 8% 92%;
-  grid-template-rows: 50% 50%;
-  grid-row-start: 1;
-  grid-row-end: 2;
+  display: flex;
+  flex-direction: column;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  padding-top: 10px;
+  padding-left: 10px;
 `;
 
 const UserImage = styled.img`
@@ -28,29 +38,17 @@ const UserImage = styled.img`
   width: 56px;
   grid-column-start: 1;
   grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 3;
+  margin-right: 5%;
 `;
 
 const Username = styled.div`
   font-weight: 600 !important;
   font-size: 16px;
-  align-self: flex-end;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  margin-left: 10px;
 `;
 
 const Date = styled.div`
   color: grey;
   font-size: 14px;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 3;
-  margin-left: 10px;
   margin-top: 3px;
 `;
 
@@ -68,11 +66,13 @@ const UserReviews = (props) => (
       {props.reviews.map((review, index) => {
       return(
         <StyledReview key={index}>
-          <UserInfo>
+          <User>
             <UserImage src={review.imageURL}></UserImage>
-            <Username>{review.user}</Username>
-            <Date>{moment(review.date).format('MMMM YYYY')}</Date>
-          </UserInfo>
+            <UserInfo>
+              <Username>{review.user}</Username>
+              <Date>{moment(review.date).format('MMMM YYYY')}</Date>
+            </UserInfo>
+          </User>
         <Paragraph>{review.reviewTxt}</Paragraph>
         </StyledReview>
       )

@@ -5,6 +5,14 @@ import ReviewRatings from './reviewRatings.jsx';
 import UserReviews from './individualReviews.jsx';
 import styled from 'styled-components';
 import Modal from 'react-modal';
+import ModalApp from './modal.jsx';
+import WebFont from 'webfontloader';
+
+WebFont.load({
+  google: {
+    families: ['Roboto', 'sans-serif']
+  }
+});
 
 Modal.setAppElement('#app')
 
@@ -26,19 +34,35 @@ const Button = styled.button `
 
 const TotalReviews = styled.h2`
   font-weight: 600;
-  font-size: 22px;
   padding: 10px;
 `;
 
-const ModalReviewCategories = styled.div`
-  grid-column-start: 1;
-  grid-column-end: 2;
+const NormalView = styled.div`
+  column-count: 2;
+  font-size: 16px;
 `;
 
-const ModalUserReviews = styled.div`
-grid-column-start: 2;
-grid-column-end: 3;
+const NormalViewUsers = styled.div`
+  column-count: 2;
+  font-size: 16px;
+  margin-top: 20px;
+  height: auto;
 `;
+
+const modalStyling = {
+  content: {
+    maxWidth: "60%",
+    position: "absolute",
+    left: "15%",
+    borderRadius: "16px",
+    padding: "0px",
+    margin: "0px",
+    fontFamily: "Roboto"
+  },
+  overlay: {
+    background: "rgba(0, 0, 0, 0.5)"
+  }
+  };
 
 class App extends React.Component {
   constructor(props) {
@@ -55,7 +79,6 @@ class App extends React.Component {
 
   componentDidMount() {
     const urlID = window.location.href.split('/')[3];
-    console.log(urlID);
     this.fetchListingInfo(urlID);
   }
 
@@ -98,7 +121,7 @@ class App extends React.Component {
   render() {
     return (
       <div style={{
-        fontFamily:"Helvetica"
+        fontFamily: "Roboto"
       }}>
         <div className="review-header">
         <TotalReviews> <div style={{
@@ -106,34 +129,19 @@ class App extends React.Component {
           color: "red"
         }}>★</div> {this.state.totalAvg} ({this.state.totalNumber} reviews)</TotalReviews>
         </div>
-        <ReviewRatings reviews={this.state.reviews} />
-        <UserReviews reviews={this.state.userReviews.slice(0, 6)}/>
-        <Modal isOpen={this.state.showReviews} onRequestClose={this.handleClose.bind(this)} style={{
-          content: {
-            width: "1000px",
-            position: "absolute",
-            left: "25%",
-            borderRadius: "16px",
-            display: "grid",
-            gridColumnTemplate: "50% 50%",
-            fontFamily: "Helvetica"
-          },
-          overlay: {
-            background: "rgba(0, 0, 0, 0.5)"
-          }
-        }}>
-          <ModalReviewCategories>
-              <div className="review-header">
-              <TotalReviews> <div style={{
-                display: "inline-block",
-                color: "red"
-              }}>★</div> {this.state.totalAvg} ({this.state.totalNumber} reviews)</TotalReviews>
-            </div>
-            <ReviewRatings reviews={this.state.reviews} />
-          </ModalReviewCategories>
-          <ModalUserReviews>
-          <UserReviews reviews={this.state.userReviews}/>
-          </ModalUserReviews>
+          <NormalView>
+          <ReviewRatings reviews={this.state.reviews} />
+          </NormalView>
+          <NormalViewUsers>
+          <UserReviews reviews={this.state.userReviews.slice(0, 6)}/>
+          </NormalViewUsers>
+        <Modal isOpen={this.state.showReviews} onRequestClose={this.handleClose.bind(this)} style={modalStyling}>
+          <ModalApp
+            onRequestClose={this.handleClose.bind(this)}
+            categoryReviews={this.state.reviews}
+            totalAvg={this.state.totalAvg}
+            totalReviews={this.state.totalNumber}
+            userReviews={this.state.userReviews} />
         </Modal>
         <Button onClick={this.handleShow.bind(this)}>Show all {this.state.totalNumber} reviews</Button>
         </div>

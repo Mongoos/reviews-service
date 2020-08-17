@@ -3,15 +3,6 @@ const userReviews = require('../data/userReviewData.js');
 
 const request = require('supertest')('http://localhost:3000');
 
-//unit test - focuses on a single method/class
-// describe('Review App', function() {
-//   it('renders React Component to page', function() {
-
-//     const component = mount(<App></App>);
-//     expect(component).toMatchSnapshot();
-//   })
-// });
-
 //Integration tests
 describe('API routes', function(){
   it ('/api/overall_reviews/1 should fetch an array of review information', function(done) {
@@ -44,3 +35,4 @@ describe('API routes', function(){
 });
 
 //end-to-end
+
