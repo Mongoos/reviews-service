@@ -35,15 +35,20 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 If you do not have mongodb available, you can visit https://www.mongodb.com/ for more information on how to get started.
 
 Once we have mongodb set up, lets get mongodb running in the background. Then, we will download all necessary files starting in the root directory of our module with:
-`npm install`
+```
+npm install
+```
 
 Now we can seed our mongodb database with the command:
-`npm run seed-db`
+```
+npm run seed-db
+```
 
 With our database now seeded with mock reviews, we can start running out webpack and our server using:
-`npm run build
+```
+npm run build
 npm start
-`
+```
 
 Now if you visit http://localhost:3000/:id you will see a module rendering based on the id number in the url.
 
