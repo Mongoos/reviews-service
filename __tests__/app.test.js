@@ -1,7 +1,7 @@
-const React = require('react');
-const userReviews = require('../data/userReviewData.js');
-
-const request = require('supertest')('http://localhost:3000');
+var supertest = require('supertest');
+var request = supertest('localhost:3000');
+var React = require('react');
+var userReviews = require('../data/userReviewData.js');
 
 //Integration tests
 describe('API routes', function(){
@@ -19,7 +19,7 @@ describe('API routes', function(){
             "Value": 2.6
         },
         35,
-        2.3
+        2.31
     ])
     })
     .end(done);
