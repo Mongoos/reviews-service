@@ -1,12 +1,13 @@
-const express = require('express')
-const app = express()
-const port = 3000
-const Review = require('../database/connection.js')
-const overallReviews = require('./overallReviews.js')
+const express = require('express');
+const app = express();
+const port = 3000;
+const Review = require('../database/connection.js');
+const overallReviews = require('./overallReviews.js');
+const cors = require('cors');
 
+app.use(cors());
 app.use(express.json());
 app.use('/:id', express.static(__dirname + "/../public"));
-
 //get review categories
 app.use('/api/overall_reviews', overallReviews);
 

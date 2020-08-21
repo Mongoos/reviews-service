@@ -14,7 +14,7 @@ WebFont.load({
   }
 });
 
-Modal.setAppElement('#app');
+Modal.setAppElement('#reviews');
 
 const Button = styled.button `
   margin: 5px;
@@ -85,7 +85,7 @@ class App extends React.Component {
   fetchListingInfo(urlID) {
     //get review rating categories
     $.ajax({
-      url: `/api/overall_reviews/${urlID}`,
+      url: `http://localhost:3000/api/overall_reviews/${urlID}`,
       method: 'GET',
       success: (reviews) => {
         this.setState({
@@ -97,7 +97,7 @@ class App extends React.Component {
     });
     //get individual reviews
     $.ajax({
-      url: `/api/individual_reviews/${urlID}`,
+      url: `http://localhost:3000/api/individual_reviews/${urlID}`,
       method: 'GET',
       success: (reviews) => {
         this.setState({
@@ -151,4 +151,4 @@ class App extends React.Component {
 }
 
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('reviews'));
